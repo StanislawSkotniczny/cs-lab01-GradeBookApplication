@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,9 +30,15 @@ namespace GradeBook.GradeBooks
             if (averageGrade >= grades[(threshold * 4) - 1])
                 return 'D';
             return 'F';
-
         }
 
+        public override void CalculateStatistics()
+        {
+            if (Students.Count < 5)
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            else
+            base.CalculateStatistics();
+        }
 
 
 
