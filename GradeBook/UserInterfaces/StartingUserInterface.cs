@@ -34,15 +34,21 @@ namespace GradeBook.UserInterfaces
         public static void CreateCommand(string command)
         {
             var parts = command.Split(' ');
-            if (parts.Length != 3)
+            if (parts.Length != 4)
             {
-                Console.WriteLine("Command not valid, Create requires a name and type of gradebook.");
+                Console.WriteLine("Command not valid, Create requires a name, type of gradebook, if it's weighted (true / false).");
                 return;
             }
             var name = parts[1];
             var type = parts[2];
             bool isWeighted = false;
             BaseGradeBook gradeBook;
+
+            if (parts[3] == "true")
+                isWeighted = true;
+            else
+                isWeighted = false;
+       
 
             if (type == "standard")
                 gradeBook = new StandardGradeBook(name , isWeighted);
@@ -65,7 +71,7 @@ namespace GradeBook.UserInterfaces
             var parts = command.Split(' ');
             if (parts.Length != 2)
             {
-                Console.WriteLine("Command not valid, Load requires a name.");
+                Console.WriteLine("Command not valid, Create requires a name, type of gradebook, if it's weighted (true / false).");
                 return;
             }
             var name = parts[2];
